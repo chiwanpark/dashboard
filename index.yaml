@@ -1,0 +1,7 @@
+indexes:
+  - kind: ServerMetric
+    properties:
+      - name: timestamp
+        direction: asc
+      - name: hostname
+        direction: asc
