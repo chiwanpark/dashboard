@@ -13,4 +13,5 @@ def create_app():
 
 
 def register_blueprint(app):
-    pass
+    from dashboard.metric import blueprint as metric_blueprint
+    app.register_blueprint(metric_blueprint)
