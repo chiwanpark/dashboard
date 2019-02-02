@@ -1,4 +1,4 @@
-from dashboard.storage import get_secure_key, store_server_metric
+from dashboard import storage
 from flask import current_app as app
 from flask import Blueprint, abort, jsonify, make_response, request
 from time import time
@@ -29,7 +29,7 @@ def is_secure_request(hostname):
         app.logger.info('No Authorization header')
         return False
 
-    secure_key = get_secure_key('metric-{}'.format(hostname))
+    secure_key = storage.get_secure_key('metric-{}'.format(hostname))
     if not secure_key or secure_key['auth_token'] != auth_token:
         app.logger.info('Secure key mismatch')
         return False
@@ -54,7 +54,7 @@ def add_metric(hostname):
     timestamp = time()
 
     try:
-        store_server_metric(hostname, timestamp, data)
+        storage.store_server_metric(hostname, timestamp, data)
         return jsonify(success=True)
     except ValueError:
         return make_response(jsonify(success=False), 500)
