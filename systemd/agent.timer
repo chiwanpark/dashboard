@@ -1,0 +1,9 @@
+[Unit]
+Description=Run agent.service every 30 seconds
+
+[Timer]
+OnBootSec=30sec
+OnCalendar=*:*:0/30
+
+[Install]
+WantedBy=default.target

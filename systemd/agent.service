@@ -1,0 +1,8 @@
+[Unit]
+Description=Run agent script
+
+[Service]
+Type=Simple
+Environment=HOSTNAME=hostname
+Environment=AUTH_TOKEN=auth_token
+Exec=/opt/dashboard/agent.py
