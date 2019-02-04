@@ -2,7 +2,7 @@
 Description=Run agent script
 
 [Service]
-Type=Simple
+Type=simple
 Environment=HOSTNAME=hostname
 Environment=AUTH_TOKEN=auth_token
-Exec=/opt/dashboard/agent.py
+ExecStart=/usr/bin/python3 /opt/dashboard/agent.py
